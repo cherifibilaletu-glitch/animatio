@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./premium.css" />
 </head>
 <body>
   <div class="bg-blobs"><span></span><span></span><span></span></div>
@@ -36,112 +37,52 @@
 
   <main class="wrap">
     <section class="design" id="d1">
-      <div class="design-head">
-        <div><span class="num">01</span><h2>شبكة بِنتو — Bento Grid</h2><p>مربعات بأحجام متناغمة، عصرية وفخمة.</p></div>
-        <button class="pick" data-pick="شبكة بِنتو">أعجبني 👍</button>
-      </div>
+      <div class="design-head"><div><span class="num">01</span><h2>شبكة بِنتو — Bento Grid</h2><p>مربعات بأحجام متناغمة، عصرية وفخمة.</p></div><button class="pick" data-pick="شبكة بِنتو">أعجبني 👍</button></div>
       <div class="bento" id="bento"></div>
     </section>
-
     <section class="design" id="d2">
-      <div class="design-head">
-        <div><span class="num">02</span><h2>خلية النحل — Hexagon</h2><p>سداسيات متشابكة بإحساس علمي فريد.</p></div>
-        <button class="pick" data-pick="خلية النحل السداسية">أعجبني 👍</button>
-      </div>
+      <div class="design-head"><div><span class="num">02</span><h2>خلية النحل — Hexagon</h2><p>سداسيات متشابكة بإحساس علمي فريد.</p></div><button class="pick" data-pick="خلية النحل السداسية">أعجبني 👍</button></div>
       <div class="hexagon" id="hexagon"></div>
     </section>
-
     <section class="design" id="d3">
-      <div class="design-head">
-        <div><span class="num">03</span><h2>عرض منقسم — Split Showcase</h2><p>قائمة جانبية وصورة كبيرة تتغيّر عند المرور.</p></div>
-        <button class="pick" data-pick="العرض المنقسم">أعجبني 👍</button>
-      </div>
-      <div class="split">
-        <div class="split-list" id="split-list"></div>
-        <div class="split-image" id="split-image"></div>
-      </div>
+      <div class="design-head"><div><span class="num">03</span><h2>عرض منقسم — Split Showcase</h2><p>قائمة جانبية وصورة كبيرة تتغيّر عند المرور.</p></div><button class="pick" data-pick="العرض المنقسم">أعجبني 👍</button></div>
+      <div class="split"><div class="split-list" id="split-list"></div><div class="split-image" id="split-image"></div></div>
     </section>
-
     <section class="design" id="d4">
-      <div class="design-head">
-        <div><span class="num">04</span><h2>شريط بطاقات — Carousel</h2><p>بطاقات كبيرة قابلة للتمرير مع أزرار تنقل.</p></div>
-        <button class="pick" data-pick="شريط البطاقات">أعجبني 👍</button>
-      </div>
-      <div class="carousel">
-        <button class="caro-btn" id="caro-prev">‹</button>
-        <div class="caro-track" id="carousel-track"></div>
-        <button class="caro-btn" id="caro-next">›</button>
-      </div>
+      <div class="design-head"><div><span class="num">04</span><h2>شريط بطاقات — Carousel</h2><p>بطاقات كبيرة قابلة للتمرير مع أزرار تنقل.</p></div><button class="pick" data-pick="شريط البطاقات">أعجبني 👍</button></div>
+      <div class="carousel"><button class="caro-btn" id="caro-prev">‹</button><div class="caro-track" id="carousel-track"></div><button class="caro-btn" id="caro-next">›</button></div>
     </section>
-
     <section class="design" id="d5">
-      <div class="design-head">
-        <div><span class="num">05</span><h2>المدار المحسّن — Orbit</h2><p>تطوير لفكرتك الدائرية: دوران بطيء، وتوقف وتكبير عند المرور دون تداخل.</p></div>
-        <button class="pick" data-pick="المدار المحسّن">أعجبني 👍</button>
-      </div>
-      <div class="orbit" id="orbit">
-        <div class="orbit-center">∑<small>المركز</small></div>
-        <div class="orbit-ring" id="orbit-ring"></div>
-      </div>
+      <div class="design-head"><div><span class="num">05</span><h2>المدار المحسّن — Orbit</h2><p>تطوير لفكرتك الدائرية: دوران بطيء، وتوقف وتكبير عند المرور دون تداخل.</p></div><button class="pick" data-pick="المدار المحسّن">أعجبني 👍</button></div>
+      <div class="orbit" id="orbit"><div class="orbit-center">∑<small>المركز</small></div><div class="orbit-ring" id="orbit-ring"></div></div>
     </section>
-
     <section class="design" id="d6">
-      <div class="design-head">
-        <div><span class="num">06</span><h2>فسيفساء — Mosaic</h2><p>صور بأحجام متفاوتة كلوحة فنية.</p></div>
-        <button class="pick" data-pick="فسيفساء الصور">أعجبني 👍</button>
-      </div>
+      <div class="design-head"><div><span class="num">06</span><h2>فسيفساء — Mosaic</h2><p>صور بأحجام متفاوتة كلوحة فنية.</p></div><button class="pick" data-pick="فسيفساء الصور">أعجبني 👍</button></div>
       <div class="mosaic" id="mosaic"></div>
     </section>
-
     <section class="design" id="d7">
-      <div class="design-head">
-        <div><span class="num">07</span><h2>بطاقات قالبة — Flip Cards</h2><p>تنقلب عند المرور لتظهر وصف القطاع.</p></div>
-        <button class="pick" data-pick="البطاقات القالبة">أعجبني 👍</button>
-      </div>
+      <div class="design-head"><div><span class="num">07</span><h2>بطاقات قالبة — Flip Cards</h2><p>تنقلب عند المرور لتظهر وصف القطاع.</p></div><button class="pick" data-pick="البطاقات القالبة">أعجبني 👍</button></div>
       <div class="flip-grid" id="flip"></div>
     </section>
-
     <section class="design" id="d8">
-      <div class="design-head">
-        <div><span class="num">08</span><h2>بطاقات ثلاثية الأبعاد — 3D Tilt</h2><p>تميل مع حركة الماوس بإحساس ثلاثي الأبعاد.</p></div>
-        <button class="pick" data-pick="البطاقات ثلاثية الأبعاد">أعجبني 👍</button>
-      </div>
+      <div class="design-head"><div><span class="num">08</span><h2>بطاقات ثلاثية الأبعاد — 3D Tilt</h2><p>تميل مع حركة الماوس بإحساس ثلاثي الأبعاد.</p></div><button class="pick" data-pick="البطاقات ثلاثية الأبعاد">أعجبني 👍</button></div>
       <div class="tilt-grid" id="tilt"></div>
     </section>
-
     <section class="design" id="d9">
-      <div class="design-head">
-        <div><span class="num">09</span><h2>شريط متحرك — Marquee</h2><p>شريط لانهائي لعرض كل القطاعات بأناقة.</p></div>
-        <button class="pick" data-pick="الشريط المتحرك">أعجبني 👍</button>
-      </div>
+      <div class="design-head"><div><span class="num">09</span><h2>شريط متحرك — Marquee</h2><p>شريط لانهائي لعرض كل القطاعات بأناقة.</p></div><button class="pick" data-pick="الشريط المتحرك">أعجبني 👍</button></div>
       <div class="marquee"><div class="marquee-row" id="marquee-row"></div></div>
     </section>
 
     <section class="design premium-design" id="d10">
-      <div class="design-head">
-        <div><span class="num">10</span><h2>Luxury Universe — عالم فاخر</h2><p>تصميم فضائي راقٍ: كل قطاع كأنه كوكب مضيء حول محور ذهبي.</p></div>
-        <button class="pick" data-pick="Luxury Universe">أعجبني 👍</button>
-      </div>
-      <div class="universe" id="universe">
-        <div class="star-field"></div>
-        <div class="universe-core"><b>SECTORS</b><small>Premium Orbit</small></div>
-        <div class="universe-items" id="universe-items"></div>
-      </div>
+      <div class="design-head"><div><span class="num">10</span><h2>Luxury Universe — عالم فاخر</h2><p>تصميم فضائي راقٍ: كل قطاع كأنه كوكب مضيء حول محور ذهبي.</p></div><button class="pick" data-pick="Luxury Universe">أعجبني 👍</button></div>
+      <div class="universe" id="universe"><div class="star-field"></div><div class="universe-core"><b>SECTORS</b><small>Premium Orbit</small></div><div class="universe-items" id="universe-items"></div></div>
     </section>
-
     <section class="design premium-design" id="d11">
-      <div class="design-head">
-        <div><span class="num">11</span><h2>Executive Magazine — تصميم مجلة</h2><p>شكل راقٍ مثل مواقع الشركات العالمية: عنوان كبير، صورة بطل، وبطاقات تحريرية.</p></div>
-        <button class="pick" data-pick="Executive Magazine">أعجبني 👍</button>
-      </div>
+      <div class="design-head"><div><span class="num">11</span><h2>Executive Magazine — تصميم مجلة</h2><p>شكل راقٍ مثل مواقع الشركات العالمية: عنوان كبير، صورة بطل، وبطاقات تحريرية.</p></div><button class="pick" data-pick="Executive Magazine">أعجبني 👍</button></div>
       <div class="magazine" id="magazine"></div>
     </section>
-
     <section class="design premium-design" id="d12">
-      <div class="design-head">
-        <div><span class="num">12</span><h2>Cinematic Stacked Cards — سينمائي</h2><p>بطاقات ضخمة متراكبة، تضغط على بطاقة فتفتح وتصبح هي الأساسية.</p></div>
-        <button class="pick" data-pick="Cinematic Stacked Cards">أعجبني 👍</button>
-      </div>
+      <div class="design-head"><div><span class="num">12</span><h2>Cinematic Stacked Cards — سينمائي</h2><p>بطاقات ضخمة متراكبة، تضغط على بطاقة فتفتح وتصبح هي الأساسية.</p></div><button class="pick" data-pick="Cinematic Stacked Cards">أعجبني 👍</button></div>
       <div class="cinema" id="cinema"></div>
     </section>
   </main>
@@ -150,5 +91,6 @@
   <footer class="foot">صُنع لمشروعك — اختر تصميماً وأخبر Notion AI برقمه ✨</footer>
 
   <script src="./app.js"></script>
+  <script src="./premium.js"></script>
 </body>
 </html>
