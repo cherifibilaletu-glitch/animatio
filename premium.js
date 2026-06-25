@@ -98,14 +98,73 @@ function renderCinema(){
 function renderGlassPanels(){
   const root = document.getElementById("glass-panels")
   if (!root) return
-  root.innerHTML = PREMIUM_SECTORS.map(s => `
-    <div class="glass-panel">
-      <span class="icon">${s.icon}</span>
-      <h3>${s.ar}</h3>
-      <p>قطاع بحثي وتدريبي متميز يجمع بين النظرية والتطبيق العملي.</p>
-      <span class="en">${s.en}</span>
-    </div>
-  `).join("")
+  root.innerHTML = PREMIUM_SECTORS.map(s =>
+    '<div class="glass-panel"><span class="icon">' + s.icon + '</span><h3>' + s.ar + '</h3><p>قطاع بحثي وتدريبي متميز يجمع بين النظرية والتطبيق العملي.</p><span class="en">' + s.en + '</span></div>'
+  ).join("")
+}
+
+/* 14 — Spotlight Cursor Cards */
+function renderSpotlight(){
+  const root = document.getElementById("spotlight-grid")
+  if (!root) return
+  root.innerHTML = PREMIUM_SECTORS.map(s =>
+    '<article class="spot-card"><span class="si">' + s.icon + '</span><h3>' + s.ar + '</h3><p>' + s.en + '</p></article>'
+  ).join("")
+  root.querySelectorAll(".spot-card").forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const r = card.getBoundingClientRect()
+      card.style.setProperty("--mx", (e.clientX - r.left) + "px")
+      card.style.setProperty("--my", (e.clientY - r.top) + "px")
+    })
+  })
+}
+
+/* 15 — Magnetic Tiles */
+function renderMagnetic(){
+  const root = document.getElementById("magnetic-grid")
+  if (!root) return
+  root.innerHTML = PREMIUM_SECTORS.map(s =>
+    '<div class="mag-tile"><span class="mi">' + s.icon + '</span><b>' + s.ar + '</b></div>'
+  ).join("")
+  root.querySelectorAll(".mag-tile").forEach((tile) => {
+    tile.addEventListener("mousemove", (e) => {
+      const r = tile.getBoundingClientRect()
+      const x = (e.clientX - r.left - r.width / 2) / (r.width / 2)
+      const y = (e.clientY - r.top - r.height / 2) / (r.height / 2)
+      tile.style.transform = "translate(" + (x * 16) + "px," + (y * 16) + "px) scale(1.07)"
+    })
+    tile.addEventListener("mouseleave", () => { tile.style.transform = "" })
+  })
+}
+
+/* 16 — Coverflow 3D Gallery */
+function renderCoverflow(){
+  const root = document.getElementById("coverflow")
+  if (!root) return
+  root.innerHTML = '<button class="cf-nav cf-prev">‹</button><div class="cf-stage"></div><button class="cf-nav cf-next">›</button>'
+  const stage = root.querySelector(".cf-stage")
+  let active = Math.floor(PREMIUM_SECTORS.length / 2)
+  const items = PREMIUM_SECTORS.map((s, i) => {
+    const el = document.createElement("article")
+    el.className = "cf-item"
+    el.style.backgroundImage = "url('" + premiumImg(s, 500, 700) + "')"
+    el.innerHTML = '<div class="cf-cap"><span>' + s.icon + '</span><b>' + s.ar + '</b></div>'
+    el.addEventListener("click", () => { active = i; layout() })
+    stage.appendChild(el)
+    return el
+  })
+  function layout(){
+    items.forEach((el, i) => {
+      const o = i - active
+      const abs = Math.abs(o)
+      el.style.transform = "translateX(" + (o * 58) + "%) translateZ(" + (-abs * 170) + "px) rotateY(" + (o * -32) + "deg)"
+      el.style.zIndex = String(100 - abs)
+      el.style.opacity = abs > 3 ? "0" : "1"
+    })
+  }
+  root.querySelector(".cf-prev").onclick = () => { active = Math.max(0, active - 1); layout() }
+  root.querySelector(".cf-next").onclick = () => { active = Math.min(items.length - 1, active + 1); layout() }
+  layout()
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -113,4 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderMagazine()
   renderCinema()
   renderGlassPanels()
+  renderSpotlight()
+  renderMagnetic()
+  renderCoverflow()
 })
