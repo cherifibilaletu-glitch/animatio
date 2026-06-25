@@ -159,7 +159,7 @@
 .mag-tile .mi { font-size: 2.6rem; display: block; pointer-events: none; }
 .mag-tile b { font-size: 1rem; pointer-events: none; }
 
-/* NEW: 16 — Coverflow 3D Gallery (auto-rotating) */
+/* NEW: 16 — Coverflow 3D Gallery (auto-rotating, no arrows) */
 .coverflow { position: relative; padding: 20px 6px 12px; }
 .cf-stage {
   position: relative;
@@ -204,31 +204,6 @@
 .cf-cap span { font-size: 1.9rem; display: block; margin-bottom: 4px; }
 .cf-cap b { display: block; font-size: 1.15rem; font-weight: 900; }
 .cf-cap small { display: block; color: #fde68a; font-size: .78rem; margin-top: 2px; }
-.cf-nav {
-  position: absolute;
-  top: 50%;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.25);
-  background: rgba(15,23,42,.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: #fff;
-  font-size: 1.6rem;
-  cursor: pointer;
-  transform: translateY(-50%);
-  z-index: 60;
-  transition: background .25s, color .25s, transform .25s, box-shadow .25s;
-}
-.cf-prev { right: 14px; }
-.cf-next { left: 14px; }
-.cf-nav:hover {
-  background: rgba(251,191,36,.95);
-  color: #111827;
-  transform: translateY(-50%) scale(1.12);
-  box-shadow: 0 14px 36px rgba(251,191,36,.45);
-}
 
 /* indicator dots */
 .cf-dots {
