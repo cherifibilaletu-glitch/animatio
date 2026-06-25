@@ -99,6 +99,118 @@
   50% { transform: translateY(-8px); }
 }
 
+/* NEW: 14 — Spotlight Cursor Cards */
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  padding: 18px 6px;
+}
+.spot-card {
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  border-radius: 24px;
+  padding: 30px 26px;
+  min-height: 180px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  overflow: hidden;
+  transition: border-color .3s, transform .3s;
+}
+.spot-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(360px circle at var(--mx) var(--my), rgba(245,158,11,.32), transparent 60%);
+  opacity: 0;
+  transition: opacity .35s;
+  pointer-events: none;
+}
+.spot-card:hover { border-color: rgba(251,191,36,.55); transform: translateY(-4px); }
+.spot-card:hover::before { opacity: 1; }
+.spot-card .si { font-size: 2.4rem; display: block; margin-bottom: 14px; position: relative; }
+.spot-card h3 { font-size: 1.2rem; font-weight: 900; margin-bottom: 6px; position: relative; }
+.spot-card p { color: #9fb0d0; position: relative; font-size: .85rem; }
+
+/* NEW: 15 — Magnetic Tiles */
+.magnetic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 18px;
+  padding: 26px 6px;
+}
+.mag-tile {
+  position: relative;
+  border-radius: 26px;
+  min-height: 150px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(99,102,241,.22), rgba(8,145,178,.18));
+  border: 1px solid rgba(255,255,255,.14);
+  cursor: pointer;
+  transition: transform .18s ease-out, box-shadow .3s, border-color .3s;
+  will-change: transform;
+}
+.mag-tile:hover { border-color: rgba(251,191,36,.6); box-shadow: 0 22px 60px rgba(0,0,0,.45); }
+.mag-tile .mi { font-size: 2.6rem; display: block; pointer-events: none; }
+.mag-tile b { font-size: 1rem; pointer-events: none; }
+
+/* NEW: 16 — Coverflow 3D Gallery */
+.coverflow { position: relative; padding: 20px 6px; }
+.cf-stage {
+  position: relative;
+  height: 420px;
+  transform-style: preserve-3d;
+  perspective: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cf-item {
+  position: absolute;
+  width: 250px;
+  height: 360px;
+  border-radius: 26px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255,255,255,.2);
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+  transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .55s, filter .55s;
+  cursor: pointer;
+}
+.cf-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(2,6,23,.95));
+}
+.cf-cap { position: absolute; z-index: 2; bottom: 18px; inset-inline: 18px; }
+.cf-cap span { font-size: 1.8rem; display: block; }
+.cf-cap b { display: block; font-size: 1.1rem; }
+.cf-nav {
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transform: translateY(-50%);
+  z-index: 50;
+  transition: background .25s, color .25s, transform .25s;
+}
+.cf-prev { right: 14px; }
+.cf-next { left: 14px; }
+.cf-nav:hover { background: rgba(251,191,36,.9); color: #111827; transform: translateY(-50%) scale(1.08); }
+
 @media (max-width: 900px){
   .magazine, .cinema{ grid-template-columns:1fr; }
   .mag-panel{ grid-template-rows:auto; }
@@ -112,4 +224,5 @@
   .mag-hero{ min-height:520px; }
   .cinema{ padding:20px; }
   .stack-card{ width:230px; height:350px; margin:-175px -115px; }
+  .cf-item{ width:200px; height:300px; }
 }
