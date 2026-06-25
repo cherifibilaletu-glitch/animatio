@@ -11,7 +11,10 @@ const SECTORS = [
   { ar: "الأعمال", en: "Business", icon: "💼", seed: "business" },
 ]
 
-const img = (s, n = 600) => `https://picsum.photos/seed/bm-${s.seed}/${n}/${n}`
+function img(s, n){
+  const size = n || 600
+  return "https://picsum.photos/seed/bm-" + s.seed + "/" + size + "/" + size
+}
 
 function renderBento(){
   const cls = ["b-xl", "b-sm", "b-sm", "b-tall", "b-sm", "b-wide", "b-sm", "b-sm", "b-tall", "b-sm"]
