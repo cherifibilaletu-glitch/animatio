@@ -137,11 +137,11 @@ function renderMagnetic(){
   })
 }
 
-/* 16 — Coverflow 3D Gallery (AUTO-ROTATING) */
+/* 16 — Coverflow 3D Gallery (AUTO-ROTATING, NO ARROWS) */
 function renderCoverflow(){
   const root = document.getElementById("coverflow")
   if (!root) return
-  root.innerHTML = '<button class="cf-nav cf-prev" aria-label="prev">‹</button><div class="cf-stage"></div><button class="cf-nav cf-next" aria-label="next">›</button><div class="cf-dots"></div>'
+  root.innerHTML = '<div class="cf-stage"></div><div class="cf-dots"></div>'
   const stage = root.querySelector(".cf-stage")
   const dotsBox = root.querySelector(".cf-dots")
   let active = 0
@@ -180,14 +180,10 @@ function renderCoverflow(){
   }
 
   function next(){ active = (active + 1) % items.length; layout() }
-  function prev(){ active = (active - 1 + items.length) % items.length; layout() }
 
   function start(){ if (!timer) timer = setInterval(next, AUTO_MS) }
   function stop(){ if (timer) { clearInterval(timer); timer = null } }
   function restart(){ stop(); start() }
-
-  root.querySelector(".cf-prev").onclick = () => { prev(); restart() }
-  root.querySelector(".cf-next").onclick = () => { next(); restart() }
 
   root.addEventListener("mouseenter", stop)
   root.addEventListener("mouseleave", start)
