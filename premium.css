@@ -159,28 +159,29 @@
 .mag-tile .mi { font-size: 2.6rem; display: block; pointer-events: none; }
 .mag-tile b { font-size: 1rem; pointer-events: none; }
 
-/* NEW: 16 — Coverflow 3D Gallery */
-.coverflow { position: relative; padding: 20px 6px; }
+/* NEW: 16 — Coverflow 3D Gallery (auto-rotating) */
+.coverflow { position: relative; padding: 20px 6px 12px; }
 .cf-stage {
   position: relative;
-  height: 420px;
+  height: 440px;
   transform-style: preserve-3d;
   perspective: 1400px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .cf-item {
   position: absolute;
-  width: 250px;
-  height: 360px;
+  width: 260px;
+  height: 370px;
   border-radius: 26px;
   overflow: hidden;
   background-size: cover;
   background-position: center;
   border: 1px solid rgba(255,255,255,.2);
   box-shadow: 0 30px 80px rgba(0,0,0,.6);
-  transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .55s, filter .55s;
+  transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .55s, filter .55s, box-shadow .55s, border-color .55s;
   cursor: pointer;
 }
 .cf-item::after {
@@ -189,27 +190,71 @@
   inset: 0;
   background: linear-gradient(180deg, transparent 45%, rgba(2,6,23,.95));
 }
-.cf-cap { position: absolute; z-index: 2; bottom: 18px; inset-inline: 18px; }
-.cf-cap span { font-size: 1.8rem; display: block; }
-.cf-cap b { display: block; font-size: 1.1rem; }
+.cf-item.active {
+  border-color: rgba(251,191,36,.85);
+  box-shadow: 0 38px 110px rgba(245,158,11,.45), 0 0 60px rgba(251,191,36,.25);
+  animation: cfFloat 3.4s ease-in-out infinite;
+  z-index: 200 !important;
+}
+@keyframes cfFloat {
+  0%, 100% { filter: saturate(1.15) brightness(1.05); }
+  50% { filter: saturate(1.35) brightness(1.18); }
+}
+.cf-cap { position: absolute; z-index: 2; bottom: 18px; inset-inline: 18px; color: #fff; }
+.cf-cap span { font-size: 1.9rem; display: block; margin-bottom: 4px; }
+.cf-cap b { display: block; font-size: 1.15rem; font-weight: 900; }
+.cf-cap small { display: block; color: #fde68a; font-size: .78rem; margin-top: 2px; }
 .cf-nav {
   position: absolute;
   top: 50%;
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.2);
-  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(15,23,42,.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   cursor: pointer;
   transform: translateY(-50%);
-  z-index: 50;
-  transition: background .25s, color .25s, transform .25s;
+  z-index: 60;
+  transition: background .25s, color .25s, transform .25s, box-shadow .25s;
 }
 .cf-prev { right: 14px; }
 .cf-next { left: 14px; }
-.cf-nav:hover { background: rgba(251,191,36,.9); color: #111827; transform: translateY(-50%) scale(1.08); }
+.cf-nav:hover {
+  background: rgba(251,191,36,.95);
+  color: #111827;
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 14px 36px rgba(251,191,36,.45);
+}
+
+/* indicator dots */
+.cf-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.cf-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,.22);
+  cursor: pointer;
+  padding: 0;
+  transition: background .25s, transform .25s, width .35s;
+}
+.cf-dot:hover { background: rgba(255,255,255,.55); }
+.cf-dot.active {
+  background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  width: 28px;
+  border-radius: 6px;
+  box-shadow: 0 0 14px rgba(251,191,36,.7);
+}
 
 @media (max-width: 900px){
   .magazine, .cinema{ grid-template-columns:1fr; }
@@ -225,4 +270,5 @@
   .cinema{ padding:20px; }
   .stack-card{ width:230px; height:350px; margin:-175px -115px; }
   .cf-item{ width:200px; height:300px; }
+  .cf-stage{ height: 380px; }
 }
