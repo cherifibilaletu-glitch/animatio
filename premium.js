@@ -95,8 +95,22 @@ function renderCinema(){
   })
 }
 
+function renderGlassPanels(){
+  const root = document.getElementById("glass-panels")
+  if (!root) return
+  root.innerHTML = PREMIUM_SECTORS.map(s => `
+    <div class="glass-panel">
+      <span class="icon">${s.icon}</span>
+      <h3>${s.ar}</h3>
+      <p>قطاع بحثي وتدريبي متميز يجمع بين النظرية والتطبيق العملي.</p>
+      <span class="en">${s.en}</span>
+    </div>
+  `).join("")
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderUniverse()
   renderMagazine()
   renderCinema()
+  renderGlassPanels()
 })
