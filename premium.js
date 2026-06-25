@@ -137,34 +137,67 @@ function renderMagnetic(){
   })
 }
 
-/* 16 — Coverflow 3D Gallery */
+/* 16 — Coverflow 3D Gallery (AUTO-ROTATING) */
 function renderCoverflow(){
   const root = document.getElementById("coverflow")
   if (!root) return
-  root.innerHTML = '<button class="cf-nav cf-prev">‹</button><div class="cf-stage"></div><button class="cf-nav cf-next">›</button>'
+  root.innerHTML = '<button class="cf-nav cf-prev" aria-label="prev">‹</button><div class="cf-stage"></div><button class="cf-nav cf-next" aria-label="next">›</button><div class="cf-dots"></div>'
   const stage = root.querySelector(".cf-stage")
-  let active = Math.floor(PREMIUM_SECTORS.length / 2)
+  const dotsBox = root.querySelector(".cf-dots")
+  let active = 0
+  let timer = null
+  const AUTO_MS = 2400
+
   const items = PREMIUM_SECTORS.map((s, i) => {
     const el = document.createElement("article")
     el.className = "cf-item"
     el.style.backgroundImage = "url('" + premiumImg(s, 500, 700) + "')"
-    el.innerHTML = '<div class="cf-cap"><span>' + s.icon + '</span><b>' + s.ar + '</b></div>'
-    el.addEventListener("click", () => { active = i; layout() })
+    el.innerHTML = '<div class="cf-cap"><span>' + s.icon + '</span><b>' + s.ar + '</b><small>' + s.en + '</small></div>'
+    el.addEventListener("click", () => { active = i; layout(); restart() })
     stage.appendChild(el)
     return el
   })
+
+  const dots = PREMIUM_SECTORS.map((_, i) => {
+    const d = document.createElement("button")
+    d.className = "cf-dot"
+    d.setAttribute("aria-label", "go to " + (i + 1))
+    d.addEventListener("click", () => { active = i; layout(); restart() })
+    dotsBox.appendChild(d)
+    return d
+  })
+
   function layout(){
     items.forEach((el, i) => {
       const o = i - active
       const abs = Math.abs(o)
+      el.classList.toggle("active", i === active)
       el.style.transform = "translateX(" + (o * 58) + "%) translateZ(" + (-abs * 170) + "px) rotateY(" + (o * -32) + "deg)"
       el.style.zIndex = String(100 - abs)
       el.style.opacity = abs > 3 ? "0" : "1"
     })
+    dots.forEach((d, i) => d.classList.toggle("active", i === active))
   }
-  root.querySelector(".cf-prev").onclick = () => { active = Math.max(0, active - 1); layout() }
-  root.querySelector(".cf-next").onclick = () => { active = Math.min(items.length - 1, active + 1); layout() }
+
+  function next(){ active = (active + 1) % items.length; layout() }
+  function prev(){ active = (active - 1 + items.length) % items.length; layout() }
+
+  function start(){ if (!timer) timer = setInterval(next, AUTO_MS) }
+  function stop(){ if (timer) { clearInterval(timer); timer = null } }
+  function restart(){ stop(); start() }
+
+  root.querySelector(".cf-prev").onclick = () => { prev(); restart() }
+  root.querySelector(".cf-next").onclick = () => { next(); restart() }
+
+  root.addEventListener("mouseenter", stop)
+  root.addEventListener("mouseleave", start)
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stop(); else start()
+  })
+
   layout()
+  start()
 }
 
 document.addEventListener("DOMContentLoaded", () => {
