@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>معرض تصاميم القطاعات — Sectors Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-blobs"><span></span><span></span><span></span></div>
+
+  <header class="topbar">
+    <div class="brand"><span class="logo">∑</span> معرض التصاميم</div>
+    <nav class="jump">
+      <a href="#d1">بِنتو</a>
+      <a href="#d2">سداسي</a>
+      <a href="#d3">منقسم</a>
+      <a href="#d4">شريط</a>
+      <a href="#d5">مدار</a>
+      <a href="#d6">فسيفساء</a>
+      <a href="#d7">بطاقات قالبة</a>
+      <a href="#d8">ثلاثي الأبعاد</a>
+      <a href="#d9">شريط متحرك</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">٩ تصاميم تفاعلية — اختر ما يعجبك</p>
+    <h1>طرق <span class="grad">أنيقة ومميزة</span><br />لعرض القطاعات</h1>
+    <p class="sub">مرّر للأسفل وتصفّح كل تصميم بحركاته. عندما يعجبك أحدها، اضغط «أعجبني» وأخبرني برقمه لأطبّقه على موقعك.</p>
+    <a class="cta" href="#d1">ابدأ التصفّح ↓</a>
+  </section>
+
+  <main class="wrap">
+    <section class="design" id="d1">
+      <div class="design-head">
+        <div><span class="num">01</span><h2>شبكة بِنتو — Bento Grid</h2><p>مربعات بأحجام متناغمة، عصرية وفخمة.</p></div>
+        <button class="pick" data-pick="شبكة بِنتو">أعجبني 👍</button>
+      </div>
+      <div class="bento" id="bento"></div>
+    </section>
+
+    <section class="design" id="d2">
+      <div class="design-head">
+        <div><span class="num">02</span><h2>خلية النحل — Hexagon</h2><p>سداسيات متشابكة بإحساس علمي فريد.</p></div>
+        <button class="pick" data-pick="خلية النحل السداسية">أعجبني 👍</button>
+      </div>
+      <div class="hexagon" id="hexagon"></div>
+    </section>
+
+    <section class="design" id="d3">
+      <div class="design-head">
+        <div><span class="num">03</span><h2>عرض منقسم — Split Showcase</h2><p>قائمة جانبية وصورة كبيرة تتغيّر عند المرور.</p></div>
+        <button class="pick" data-pick="العرض المنقسم">أعجبني 👍</button>
+      </div>
+      <div class="split">
+        <div class="split-list" id="split-list"></div>
+        <div class="split-image" id="split-image"></div>
+      </div>
+    </section>
+
+    <section class="design" id="d4">
+      <div class="design-head">
+        <div><span class="num">04</span><h2>شريط بطاقات — Carousel</h2><p>بطاقات كبيرة قابلة للتمرير مع أزرار تنقل.</p></div>
+        <button class="pick" data-pick="شريط البطاقات">أعجبني 👍</button>
+      </div>
+      <div class="carousel">
+        <button class="caro-btn" id="caro-prev">‹</button>
+        <div class="caro-track" id="carousel-track"></div>
+        <button class="caro-btn" id="caro-next">›</button>
+      </div>
+    </section>
+
+    <section class="design" id="d5">
+      <div class="design-head">
+        <div><span class="num">05</span><h2>المدار المحسّن — Orbit</h2><p>تطوير لفكرتك الدائرية: دوران بطيء، وتوقف وتكبير عند المرور دون تداخل.</p></div>
+        <button class="pick" data-pick="المدار المحسّن">أعجبني 👍</button>
+      </div>
+      <div class="orbit" id="orbit">
+        <div class="orbit-center">∑<small>المركز</small></div>
+        <div class="orbit-ring" id="orbit-ring"></div>
+      </div>
+    </section>
+
+    <section class="design" id="d6">
+      <div class="design-head">
+        <div><span class="num">06</span><h2>فسيفساء — Mosaic</h2><p>صور بأحجام متفاوتة كلوحة فنية.</p></div>
+        <button class="pick" data-pick="فسيفساء الصور">أعجبني 👍</button>
+      </div>
+      <div class="mosaic" id="mosaic"></div>
+    </section>
+
+    <section class="design" id="d7">
+      <div class="design-head">
+        <div><span class="num">07</span><h2>بطاقات قالبة — Flip Cards</h2><p>تنقلب عند المرور لتظهر وصف القطاع.</p></div>
+        <button class="pick" data-pick="البطاقات القالبة">أعجبني 👍</button>
+      </div>
+      <div class="flip-grid" id="flip"></div>
+    </section>
+
+    <section class="design" id="d8">
+      <div class="design-head">
+        <div><span class="num">08</span><h2>بطاقات ثلاثية الأبعاد — 3D Tilt</h2><p>تميل مع حركة الماوس بإحساس ثلاثي الأبعاد.</p></div>
+        <button class="pick" data-pick="البطاقات ثلاثية الأبعاد">أعجبني 👍</button>
+      </div>
+      <div class="tilt-grid" id="tilt"></div>
+    </section>
+
+    <section class="design" id="d9">
+      <div class="design-head">
+        <div><span class="num">09</span><h2>شريط متحرك — Marquee</h2><p>شريط لانهائي لعرض كل القطاعات بأناقة.</p></div>
+        <button class="pick" data-pick="الشريط المتحرك">أعجبني 👍</button>
+      </div>
+      <div class="marquee"><div class="marquee-row" id="marquee-row"></div></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <footer class="foot">صُنع لمشروعك — اختر تصميماً وأخبر Notion AI برقمه ✨</footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
